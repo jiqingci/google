@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 mcp = FastMCP("scholar_pubmed")
 
 @mcp.tool()
-async def search_google_scholar_key_words(query: str, num_results: int = 5) -> List[Dict[str, Any]]:
+async def search_google_scholar_key_words(query: str, num_results: int = 5000) -> List[Dict[str, Any]]:
     logging.info(f"Searching Google Scholar for articles with query: {query}, num_results: {num_results}")
     """
     Search for articles on Google Scholar using key words.
@@ -31,7 +31,7 @@ async def search_google_scholar_key_words(query: str, num_results: int = 5) -> L
         return [{"error": f"An error occurred while searching Google Scholar: {str(e)}"}]
 
 @mcp.tool()
-async def search_google_scholar_advanced(query: str, author: Optional[str] = None, year_range: Optional[tuple] = None, num_results: int = 5) -> List[Dict[str, Any]]:
+async def search_google_scholar_advanced(query: str, author: Optional[str] = None, year_range: Optional[tuple] = None, num_results: int = 5000) -> List[Dict[str, Any]]:
     logging.info(f"Performing advanced search with parameters: {locals()}")
     """
     Search for articles on Google Scholar using advanced filters.
